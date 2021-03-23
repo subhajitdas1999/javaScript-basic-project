@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>Hey</p>
+            <p>Let's</p>
+            <p>Dance</p>
+        </div>
+        <div class="panel panel2">
+            <p>Give</p>
+            <p>Take</p>
+            <p>Revibe</p>
+        </div>
+        <div class="panel panel3">
+            <p>Experience</p>
+            <p>It</p>
+            <p>Today</p>
+        </div>
+        <div class="panel panel4">
+            <p>Give</p>
+            <p>All</p>
+            <p>You Can</p>
+        </div>
+        <div class="panel panel5">
+            <p>Life</p>
+            <p>In</p>
+            <p>motion</p>
+        </div>
+    </div>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        p {
+            font-size: 1.3rem;
+            /* border: 1px solid blue; */
+        }
+
+        p:nth-child(2) {
+            font-size: 3rem;
+        }
+
+        html,
+        body {
+            height: 100%;
+
+        }
+
+        .panels {
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+
+
+            /* background-color: red; */
+
+        }
+
+        .panel {
+            background-size: cover;
+            color: aquamarine;
+            flex: 1;
+
+            /* text-align: center; */
+
+
+            transition: all 0.5s cubic-bezier(0.25, 0.1, 0.27, 1.84);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .panel>*:first-child {
+
+            transform: translateY(-100%);
+        }
+
+        .panel>*:last-child {
+            transform: translateY(100%);
+        }
+
+
+        .panel.open-active>*:first-child {
+            transform: translateY(0);
+        }
+
+        .panel.open-active>*:last-child {
+            transform: translateY(0);
+        }
+
+
+        .panel>* {
+            flex: 1 0 auto;
+            
+            display: flex;
+            align-items: center;
+            transition: transform 0.5s;
+        }
+
+        .open {
+            flex: 5;
+           
+            
+        }
+
+        .open p{
+            font-size: 4rem;
+        }
+
+
+
+        .panel1 {
+            background-image: url("pic1.jpg");
+            /* background-color: red; */
+            /* flex-basis: 40%; */
+        }
+
+        .panel2 {
+            background-image: url("pic2.jpg");
+            /* background-color: yellow; */
+        }
+
+        .panel3 {
+            background-image: url("pic3.jpg");
+            /* background-color: aqua; */
+        }
+
+        .panel4 {
+            background-image: url("pic4.jpg");
+            /* background-color: violet; */
+        }
+
+        .panel5 {
+            background-image: url("pic5.jpg");
+            /* background-color: tomato; */
+        }
+    </style>
+
+    <script>
+        let allPanel = document.querySelectorAll(".panel");
+        allPanel.forEach((panel) => panel.addEventListener("click",function(){
+            
+            panel.classList.toggle("open");
+           
+        }))
+
+        allPanel.forEach((panel) => panel.addEventListener(("transitionend"),function(e){
+            if (e.propertyName.includes("flex")){
+                panel.classList.toggle("open-active");
+            }
+           
+        }))
+    </script>
+</body>
+
+</html>
